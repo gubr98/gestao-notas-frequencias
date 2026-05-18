@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
   <nav class="navbar navbar-dark navbar-app navbar-aluno">
     <div class="container">
-      <a class="navbar-brand" href="/pages/aluno-dashboard.html"><i class="fas fa-user-graduate mr-2"></i>Área do Aluno</a>
-      <a href="/pages/aluno-dashboard.html" class="btn btn-outline-light btn-sm ml-auto">Voltar</a>
+      <a class="navbar-brand" href="../pages/aluno-dashboard.html"><i class="fas fa-user-graduate mr-2"></i>Área do
+        Aluno</a>
+      <a href="../pages/aluno-dashboard.html" class="btn btn-outline-light btn-sm ml-auto">Voltar</a>
     </div>
   </nav>
 
@@ -42,7 +45,8 @@
           </p>
           <p class="form-group">
             <label>Descrição / justificativa</label>
-            <textarea class="form-control" id="descricao" rows="4" required placeholder="Descreva o motivo do ajuste..."></textarea>
+            <textarea class="form-control" id="descricao" rows="4" required
+              placeholder="Descreva o motivo do ajuste..."></textarea>
           </p>
           <p class="form-group">
             <label>Evidências (opcional)</label>
@@ -56,8 +60,8 @@
     </article>
   </main>
 
-  <script src="/js/auth.js"></script>
-  <script src="/js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/api.js"></script>
   <script>
     if (!AUTH.requireArea("aluno", "/pages/login-aluno.html")) throw new Error("redirect");
 
@@ -95,4 +99,5 @@
     });
   </script>
 </body>
+
 </html>
