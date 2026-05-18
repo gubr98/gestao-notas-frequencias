@@ -1,0 +1,175 @@
+:root {
+  --primary: #007bff;
+  --success: #28a745;
+  --info: #17a2b8;
+  --gradient-aluno: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  --gradient-docente: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+  --gradient-secretaria: linear-gradient(135deg, #17a2b8 0%, #117a8b 100%);
+  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f4f6f9;
+  color: #333;
+  min-height: 100vh;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.hero {
+  background: var(--gradient-hero);
+  color: #fff;
+  padding: 4rem 0;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-weight: 700;
+}
+
+.area-card {
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.area-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+}
+
+.area-card .card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.area-card.aluno .card-icon { color: var(--primary); }
+.area-card.docente .card-icon { color: var(--success); }
+.area-card.secretaria .card-icon { color: var(--info); }
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.login-header {
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.login-header.aluno { background: var(--gradient-aluno); }
+.login-header.docente { background: var(--gradient-docente); }
+.login-header.secretaria { background: var(--gradient-secretaria); }
+
+.login-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.login-body {
+  padding: 2rem;
+  background: #fff;
+}
+
+.panel-card {
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 0.35em 0.65em;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-pending { background: #fff3cd; color: #856404; }
+.status-in_review { background: #d1ecf1; color: #0c5460; }
+.status-approved { background: #d4edda; color: #155724; }
+.status-rejected { background: #f8d7da; color: #721c24; }
+.status-validated { background: #cce5ff; color: #004085; }
+
+.request-item {
+  border-left: 4px solid #dee2e6;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: #fff;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.request-item.pending { border-left-color: #ffc107; }
+.request-item.in_review { border-left-color: #17a2b8; }
+.request-item.approved { border-left-color: #28a745; }
+.request-item.rejected { border-left-color: #dc3545; }
+.request-item.validated { border-left-color: #007bff; }
+
+.form-control, .custom-select {
+  border-radius: 8px;
+}
+
+.form-control:focus, .custom-select:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6c757d;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.alert-floating {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  min-width: 280px;
+}
+
+footer.app-footer {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #6c757d;
+  font-size: 0.875rem;
+}

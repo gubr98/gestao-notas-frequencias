@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Aluno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-dark navbar-expand-lg" style="background:#007bff;">
+    <div class="container">
+      <a class="navbar-brand" href="/pages/aluno-dashboard.html"><i class="fas fa-user-graduate mr-2"></i>Área do Aluno</a>
+      <div class="ml-auto">
+        <a href="/pages/aluno.html" class="btn btn-light btn-sm mr-2">Nova solicitação</a>
+        <button class="btn btn-outline-light btn-sm" onclick="AUTH.logout()">Sair</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <header class="mb-4">
+      <h1 class="h3 mb-1">Minhas solicitações</h1>
+      <p class="text-muted mb-0">Olá, <span id="userName">Aluno</span></p>
+    </header>
+
+    <article class="card panel-card">
+      <section class="card-body">
+        <section id="loading" class="text-center py-4 text-muted">Carregando...</section>
+        <section id="lista"></section>
+      </section>
+    </article>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/api.js"></script>
+  <script>
+    if (!AUTH.requireArea("aluno", "/pages/login-aluno.html")) throw new Error("redirect");
+
+    document.getElementById("userName").textContent =
+      sessionStorage.getItem("userName") || "Aluno";
+
+    async function carregar() {
+      const lista = document.getElementById("lista");
+      const loading = document.getElementById("loading");
+      try {
+        const all = await API.getRequests();
+        const requests = filterByStudent(all, AUTH.getStudentEmail());
+        loading.style.display = "none";
+
+        if (!requests.length) {
+          lista.innerHTML = `
+            <section class="empty-state">
+              <i class="fas fa-inbox d-block"></i>
+              <p>Nenhuma solicitação encontrada.</p>
+              <a href="/pages/aluno.html" class="btn btn-primary">Criar solicitação</a>
+            </section>`;
+          return;
+        }
+
+        lista.innerHTML = requests.map((r) => `
+          <article class="request-item ${r.status}">
+            <section class="d-flex justify-content-between align-items-start flex-wrap">
+              <section>
+                <strong>${r.discipline}</strong> <small class="text-muted">(${r.courseCode})</small>
+                <p class="mb-1 mt-1">${r.description}</p>
+                <small class="text-muted">${formatDate(r.createdAt)}</small>
+              </section>
+              <section>${statusBadge(r.status)}</section>
+            </section>
+            ${r.decisionNote ? `<p class="mt-2 mb-0 small text-muted"><strong>Obs.:</strong> ${r.decisionNote}</p>` : ""}
+          </article>
+        `).join("");
+      } catch (err) {
+        loading.style.display = "none";
+        lista.innerHTML = `<section class="alert alert-danger">Erro ao carregar: ${err.message}. Verifique se o backend está rodando (npm start na pasta backend).</section>`;
+      }
+    }
+
+    carregar();
+  </script>
+</body>
+</html>
