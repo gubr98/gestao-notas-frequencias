@@ -1,4 +1,4 @@
-# gestao-notas-frequencias
+# Gestão de Notas e Frequências
 
 **Repositório GitHub:** [gubr98/ajuste-notas-frequencias](https://github.com/gubr98/ajuste-notas-frequencias.git)
 
