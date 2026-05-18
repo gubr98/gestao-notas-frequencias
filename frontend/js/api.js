@@ -1,7 +1,13 @@
+const API_BACKEND = "http://localhost:3000";
+
 const API = {
   get baseUrl() {
-    if (window.location.protocol === "file:") {
-      return "http://localhost:3000";
+    // Frontend (file://, serve na 8080, etc.) não é o mesmo servidor da API
+    if (
+      window.location.protocol === "file:" ||
+      window.location.port !== "3000"
+    ) {
+      return API_BACKEND;
     }
     return window.location.origin;
   },
