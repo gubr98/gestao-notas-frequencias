@@ -10,7 +10,7 @@ Ele já vem com backend (Node + Express) e um frontend simples em HTML/JS para d
 Projeto em desenvolvimento para auxiliar na administração acadêmica. 
 Desenvolvido para instituições de ensino que buscam excelência, o sistema oferece uma plataforma moderna, intuitiva e altamente segura para centralizar, organizar e gerenciar todas as informações acadêmicas.
 
-![!\[alt text\] a]![(ajuste-notas-frequencias.png)](ajustes-notas-frequencias-1.png)
+![(ajuste-notas-frequencias.png)](ajustes-notas-frequencias-1.png)
 
 ## Objetivos
 
