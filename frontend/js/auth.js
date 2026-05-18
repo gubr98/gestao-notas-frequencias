@@ -12,7 +12,7 @@ const AUTH = {
 
   logout() {
     sessionStorage.clear();
-    window.location.href = "/";
+    window.location.href = 'http://127.0.0.1:5500/frontend/index.html';
   },
 
   requireArea(area, loginPage) {
